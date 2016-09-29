@@ -1,0 +1,42 @@
+$base-border:        1px solid $base-border-color;
+$base-border-radius: 4px;
+
+$base-spacing:       1em;
+$small-spacing:      14px;
+
+$spacing: 40px;
+$nav-height: 83px;
+$min-height: 400px;
+$margin-mobile: 10px;
+
+// Animations
+$base-duration: 300ms;
+$base-timing: ease;
+
+
+// Config Bourbon
+$visual-grid: false;
+$visual-grid-color: red;
+$visual-grid-index: front;
+$visual-grid-opacity: 0.1; 
+
+
+$max-width: 990px;
+$column: 42.5px;
+$gutter: $spacing;
+$grid-columns: 12;
+
+$default-feature: min-width;
+$border-box-sizing: true !default;
+$disable-warnings: false !default;
+
+$asset-pipeline: true;
+$output-bourbon-deprecation-warnings: true;
+
+$prefix-for-webkit:    true;
+$prefix-for-mozilla:   true;
+$prefix-for-microsoft: true;
+$prefix-for-opera:     true;
+$prefix-for-spec:      true;
+
+

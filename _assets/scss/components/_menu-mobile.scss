@@ -1,0 +1,55 @@
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#panel {
+	&.on {overflow: hidden!important}
+	&.off {overflow: auto!important;}
+}
+#menu-mobile {
+	&.on {overflow: auto!important}
+	&.off {overflow: hidden!important;}
+}
+
+.slideout-panel {
+  @include box-shadow(16px, 0px, 20px, -20px, $c-black);
+  position:relative;
+  z-index: 1;
+  background-color: $c-white;
+  
+  &.on {
+ 	will-change: transform;
+
+  }
+}
+
+.slideout-open,
+.slideout-open body,
+.slideout-open .slideout-panel {
+  overflow: hidden;
+}
+
+.slideout-open #menu-mobile,
+.slideout-open .slideout-menu {
+  display: block;
+}
+
+
+
+#menu-mobile {
+	@include overflow-scroll(touch);
+	background-color: lighten($c-light-primary, 4);
+	position: fixed;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 0;
+	width: 256px;
+	overflow-y: auto;
+	display: none;
+
+	&.on {display: block;}
+
+}

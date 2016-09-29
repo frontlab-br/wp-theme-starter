@@ -1,0 +1,14 @@
+footer.footer {
+  	@include outer-container(100%);
+	background-color: $c-dark-primary;
+	padding: $spacing 0; 
+
+	.row {
+		@include outer-container(100%);
+
+		.col {
+
+		}
+
+	}
+}

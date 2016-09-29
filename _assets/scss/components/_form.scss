@@ -1,0 +1,46 @@
+.form {
+
+	br {display: none!important;}
+
+	span.field {
+		@include clearfix;
+		display: block;
+		position: relative;
+		margin-bottom: $small-spacing;
+
+		input,
+		textarea {
+			float: left;
+			text-transform: uppercase;
+			padding-left: $spacing;
+			max-height: 188px;
+
+			&.wpcf7-not-valid {
+				border-color: lighten($c-alert-error, 28);
+			}
+		}
+	}
+
+	.wpcf7-not-valid-tip {display: none;}
+
+	img.ajax-loader {
+		@include size(38px);
+		position: absolute;
+		margin: 0 auto;
+		top: 6px;
+		right: 12px;
+		background: darken($c-alert-success, 10%);
+	}
+
+	div.wpcf7-response-output {
+		border: 0;
+		padding: 0;
+		font-size: em(14px);
+		color: $c-dark-primary;
+		text-align: center;
+
+		&.wpcf7-validation-errors {
+			color: $c-alert-error;
+		}
+	}
+}

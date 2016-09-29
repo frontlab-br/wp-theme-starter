@@ -1,0 +1,97 @@
+.button.-link {
+    font-size: em(12px);
+    padding-right: em(26px);
+
+    &:hover {
+        .icon {
+            fill: $c-dark-secondary;
+            right: em(0);
+        }
+    }
+
+    .icon {
+        @include transition(fill, $base-duration);
+        display: inline-block;
+        vertical-align: initial;
+        margin-left: ($spacing/4);
+        @include size(13px);
+        fill: $c-txt-primary;
+        position: absolute;
+        right: em(6px);
+        top: 2px;
+    }
+}
+
+.card {
+    @include box-shadow(2px, 2px, 0px, 0px, rgba($c-black, .3));
+    @include transition-duration($base-duration);
+    @include border-radius($base-border-radius);
+    @include backface-visibility(hidden);
+    @include box-sizing(border-box);
+    @include clearfix;
+    background-color: $c-white;
+}
+
+
+
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    img {
+        display: none;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        transform: translateX(-50%);
+    }
+}
+
+
+
+.landing {}
+
+.dashboard {
+
+    .header.fixed {
+        @include media($tablet) { 
+            position: relative;
+        }
+    }
+    .content {
+        @include media($tablet) { 
+            padding: 0;
+        } 
+    }
+}
+
+
+.error-404 {
+    padding: $spacing*2 0;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+

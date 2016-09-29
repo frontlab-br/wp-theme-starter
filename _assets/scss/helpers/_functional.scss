@@ -1,0 +1,29 @@
+.animated {
+  	@include animate-prefixer(animation-duration, $base-duration);
+  	@include animate-prefixer(animation-fill-mode, $base-fill-mode);
+
+	&.infinite {
+	  animation-iteration-count: $base-iteration-count;
+	}
+
+	&.bounceIn,
+	&.bounceOut {
+	  @include animate-prefixer(animation-duration, $base-duration * 0.75);
+	}
+}
+
+.table {
+	display: table;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.table-cell {
+	display: table-cell;
+	width: 100%;
+	vertical-align: middle;
+}
+
+.blur { @include blur(4) }
+

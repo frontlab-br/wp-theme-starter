@@ -1,0 +1,4 @@
+.header {
+    @include outer-container(100%);
+    background-color: $c-light-primary;
+}

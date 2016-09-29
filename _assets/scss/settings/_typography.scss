@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Justus", serif !important;
+  font-style: normal;
+  src: url("../font/justus-versalitas.eot");
+  src: url("../font/justus-versalitas.eot?#iefix") format("embedded-opentype"),
+       url("../font/justus-versalitas.woff2") format("woff2"),
+       url("../font/justus-versalitas.woff") format("woff"),
+       url("../font/justus-versalitas.ttf") format("truetype"),
+       url("../font/justus-versalitas.svg#Justus") format("svg");
+}
+
+
+$font-regular: 'Montserrat', sans-serif;
+$font-light:   $font-regular;
+$font-italic:  $font-regular;
+$font-bold:    $font-regular;
+$font-meta:    $font-regular;
+$f-justus:     "Justus", serif !important;
+
+// Typography
+$base-font-family:    $font-regular;
+$heading-font-family: $font-regular;
+
+// Line height
+$base-line-height:    1.5;
+$heading-line-height: 1.2;
+
+// Font sizing
+@mixin fs-title {
+  line-height: 46px;
+  font-size:   42px;
+  font-family: $font-bold;
+  font-weight: 500;
+}
+
+@mixin fs-headings {
+  font-family: $font-bold;
+  font-weight: bold;
+}
+
+@mixin fs-btn {
+  font-family: $font-meta;
+  font-weight: bold;
+}
+
+@mixin fs-body {
+  line-height: em(18px);
+  font-size:   em(16px);
+
+  // @include media($mobile) {
+  //   font-size: 16px;
+  //   line-height: 16px;
+  // }
+}
+
+@mixin fs-code {
+  font-family: $font-meta;
+  font-weight: 300;
+}
+
+@mixin fs-italic {
+  font-family: $font-italic;
+  font-weight: 400;
+  font-style: italic;
+}
+
+@mixin fs-justus {
+  font-family: $f-justus;
+  font-weight: normal;
+}

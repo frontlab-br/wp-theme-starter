@@ -1,0 +1,24 @@
+@if $use-spin-back == true {
+
+	@-webkit-keyframes spin-back {
+	    0%  {-webkit-transform: rotate(360deg);}
+	    100% {-webkit-transform: rotate(0deg);}   
+	}
+
+
+	.spin-back {
+		@include animate-prefixer(animation-name, spin-back);
+	}
+}
+
+@if $use-spin-go == true {
+
+	@-webkit-keyframes spin-go {
+	    0%  {-webkit-transform: rotate(0deg);}
+	    100% {-webkit-transform: rotate(360deg);}   
+	}
+
+	.spin-go {
+		@include animate-prefixer(animation-name, spin-go);
+	}
+}

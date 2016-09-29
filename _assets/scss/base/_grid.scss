@@ -1,0 +1,49 @@
+$s-m: 534px !default;
+$s-t: 992px !default;
+$s-content-tablet: 790px !default;
+$s-d: $max-width !default;
+
+$mobile:  new-breakpoint(max-width $s-m, 4); 
+$tablet:  new-breakpoint(max-width $s-t, 8); 
+$content-tablet: new-breakpoint(max-width $s-content-tablet, 8); 
+$desktop: new-breakpoint(min-width $s-d, 12);
+
+.content { 
+	@include clearfix;
+    min-height: $min-height;
+    background-color: $c-white;
+    padding: $nav-height 0 0;
+
+    @include media($mobile) {
+		padding: ($nav-height - $nav-height/4.5) 0 0;
+	}
+}
+
+.full-container { @include outer-container(100%); }
+
+.container {
+	@include clearfix;
+	@include outer-container;
+	@include media(max-width $max-width + ($margin-mobile*6)) {
+		margin: 0 ($margin-mobile*2) 0 ($margin-mobile*2);
+	}
+}
+
+.col-content {
+	@include span-columns(8);
+	@include clearfix;
+	@include media($mobile) {
+		@include span-columns(4);
+		margin: 0;
+	}
+}
+
+aside {
+	@include span-columns(4);
+	@include clearfix;
+	background-color: $c-light-primary;
+	padding: em(20);
+	@include media($mobile) {
+		@include span-columns(4);
+	}
+}

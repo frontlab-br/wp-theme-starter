@@ -1,0 +1,147 @@
+.blocker {
+    @include overflow-scroll(touch);
+    @include box-sizing(border-box);
+    @include size(100%);
+    position: fixed;
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    overflow: auto;
+    z-index: 99;
+    padding: ($spacing*2) $spacing;
+    background-color: rgba($c-dark-primary, .9);
+    text-align: center;
+
+    &:before{
+        content: "";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.05em;
+    }
+
+    @include media($mobile) {
+        padding: ($spacing*2) ($spacing/2) ($spacing/2);
+    }
+
+    &.behind { background-color: transparent; }
+
+    .modal {
+        display: inline-block!important;
+        vertical-align: middle;
+        position: relative;
+        z-index: 2;
+        max-width: $max-width;
+        box-sizing: border-box;
+        width: $max-width;
+        text-align: left;
+        position: relative;
+        padding: 0;
+        background-color: transparent;
+
+        @include media(max-width $max-width + 100) {
+            @include outer-container(100%);
+        }
+        
+        .close-modal {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: -3.125em;
+        }
+
+        .close {
+            @include transition(fill, $base-duration);
+            @include size(30px);
+            fill: $c-dark-primary;
+            background-color: $c-dark-secondary;
+            padding: em(6px);
+
+            &:hover {
+                fill: $c-white;
+                background-color: darken($c-dark-secondary, 10);
+            }
+        }
+
+        .card {
+            overflow: hidden;
+            position: relative;
+
+            &.-content {
+                display: block;
+                margin-right: 1%;
+                width: 60%;
+                max-width: 594px;
+
+                @include media($tablet) {
+                   width: 100%;
+                   margin-bottom: 20px;
+                }
+            }
+
+            &.-sidebar {
+                display: block;
+                width: 39%;
+                padding: ($spacing/2) ($spacing - 10);
+
+                @include media($tablet) {
+                   width: 380px;
+                }
+
+                @include media($mobile) {
+                   width: 100%;
+                }
+            }
+
+            &.-message {
+                margin: 0 auto;
+                display: block;
+                width: em(380px);
+                overflow: visible;
+
+                @include media($mobile) { 
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+// ------ //
+
+.modal-spinner {
+    display: block;
+    @include size(74px);
+    margin-right: -37px;
+    margin-top: -37px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    
+
+    &:after,
+    &:before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-size: 4px;
+    } 
+
+    
+    &:after {
+        // @include sprite(loading-out);
+        // @include animate-prefixer(animation-name, spin-back .8s infinite linear);
+    }
+    
+    &:before {
+        @include svg(loading);
+        @include animation(spin-go .8s infinite linear);
+    }
+}
+
+// ------ //
