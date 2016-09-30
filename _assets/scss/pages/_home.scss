@@ -1,4 +1,9 @@
 .teste {
 	@include sprite($dell);
 	display: block;
+
+	&:before {
+		content: '';
+		@include svg(loading);
+	}
 }

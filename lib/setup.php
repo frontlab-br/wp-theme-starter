@@ -8,13 +8,6 @@ use Roots\Sage\Assets;
  * Theme setup
  */
 function setup() {
-  // Enable features from Soil when plugin is activated
-  // https://roots.io/plugins/soil/
-  // add_theme_support('soil-clean-up');
-  // add_theme_support('soil-nav-walker');
-  // add_theme_support('soil-nice-search');
-  // add_theme_support('soil-jquery-cdn');
-  // add_theme_support('soil-relative-urls');
 
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
@@ -27,7 +20,9 @@ function setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus([
-    'primary_navigation' => __('Primary Navigation', 'sage')
+    'primary_navigation' => __('Header Navigation', 'sage'),
+    'mobile_navigation'  => __('Mobile Navigation', 'sage'),
+    'footer_navigation'  => __('Footer Navigation', 'sage')
   ]);
 
   // Enable post thumbnails
@@ -71,6 +66,16 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
+
+  register_sidebar([
+    'name'          => __('Mobile', 'sage'),
+    'id'            => 'sidebar-mobile',
+    'before_widget' => '<div class="widget %1$s %2$s">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>'
+  ]);
+
 }
 add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
 
@@ -85,7 +90,8 @@ function display_sidebar() {
     // @link https://codex.wordpress.org/Conditional_Tags
     is_404(),
     is_front_page(),
-    is_page_template('template-custom.php'),
+    is_page_template('page-full.php'),
+    is_page_template('templates/content-single.php')
   ]);
 
   return apply_filters('sage/display_sidebar', $display);
@@ -111,19 +117,4 @@ function assets() {
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
 
-
-
-
-
-
-
-
-add_action('after_setup_theme', 'remove_admin_bar');
-
-function remove_admin_bar() {
-  if (!current_user_can('administrator') && !is_admin()) {
-    show_admin_bar(false);
-  }
-}
-
-show_admin_bar(false);
+add_filter('show_admin_bar', '__return_false');

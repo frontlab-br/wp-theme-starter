@@ -24,7 +24,7 @@ var gulp         = require('gulp');
     imagemin     = require('gulp-imagemin'),
     jshint       = require('gulp-jshint'),
     uglify       = require('gulp-uglify'),
-    teste        = require('path'),
+    path         = require('path'),
     assets       = { src: '_assets/', dest: 'assets/' };
     includes     = { dest: 'templates/' };
 var svg          = { sprite_svg: require('gulp-svg-sprite'), svg2png: require('gulp-svg2png') }
@@ -42,7 +42,9 @@ var paths        = {
         dest: assets.dest + 'font/'
     },
     scss: {
-        src:  assets.src + 'scss/',
+        src:  assets.src + 'scss/'
+    },
+    css: {
         dest: assets.dest + 'css/'
     },
     svg: {
@@ -74,7 +76,7 @@ gulp.task('browser-sync', function () {
     });
     gulp.watch(paths.scss.src + '**/*.scss', ['styles']).on('change', browser_sync.reload);;
     gulp.watch(paths.js.src + '**/*.js', ['scripts']).on('change', browser_sync.reload);
-    gulp.watch('*.php').on('change', browser_sync.reload);
+    gulp.watch('**/*.php').on('change', browser_sync.reload);
 });
 
 // ============= IMAGES BUILDING ============= //
@@ -98,7 +100,7 @@ gulp.task('svg_min_build', function () {
     return gulp.src(paths.svg.src + '**/*.svg')
         .pipe(plumber({errorHandler: onError}))
         .pipe(svgmin(function (file) {
-            var prefix = teste.basename(file.relative, teste.extname(file.relative));
+            var prefix = path.basename(file.relative, path.extname(file.relative));
             return {
                 plugins: [{
                     cleanupIDs: {
@@ -200,16 +202,16 @@ gulp.task('images', function () {
 
 // Compile SASS
 gulp.task('styles', function () {
-    return gulp.src(paths.scss.src + 'main.scss')
+    return gulp.src(paths.scss.src + '*.scss')
         .pipe(plumber({errorHandler: onError}))
         .pipe(sass({
             includePaths: [].concat(normalize, neat),
             outputStyle: 'compressed'
         }))
-        .pipe(gulp.dest(paths.scss.dest));
+        .pipe(gulp.dest(paths.css.dest));
 });
 
-// Minify font
+// Fontface Generate
 gulp.task('font', function () {
     return gulp.src(paths.font.src + '*.ttf')
         .pipe(fontmin())

@@ -35,7 +35,7 @@ select {
   @include box-sizing(border-box);
   @include appearance(none);
   font-size: em(12px);
-  background: $c-light-primary;
+  background: $c-white;
   border: 2px solid $c-light-primary;
   font-family: $base-font-family;
   padding: em(10px);

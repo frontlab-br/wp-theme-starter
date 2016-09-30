@@ -11,6 +11,7 @@
       <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
     </footer>
 
-    <!-- <?php// comments_template('/templates/comments.php'); ?> -->
+    <?php cmb2_output_file_list( 'cmb_text', 'small' ); ?>
+    
   </article>
 <?php endwhile; ?>

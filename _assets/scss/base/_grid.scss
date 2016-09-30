@@ -8,14 +8,26 @@ $tablet:  new-breakpoint(max-width $s-t, 8);
 $content-tablet: new-breakpoint(max-width $s-content-tablet, 8); 
 $desktop: new-breakpoint(min-width $s-d, 12);
 
+body.sidebar-primary {
+	.content {
+		@include span-columns(8);
+		@include clearfix;
+		@include media($mobile) {
+			@include span-columns(4);
+			margin: 0;
+		}
+	}
+}
+
 .content { 
 	@include clearfix;
     min-height: $min-height;
     background-color: $c-white;
-    padding: $nav-height 0 0;
+    // padding: $nav-height 0 0;
+    padding: 0;
 
     @include media($mobile) {
-		padding: ($nav-height - $nav-height/4.5) 0 0;
+		// padding: ($nav-height - $nav-height/4.5) 0 0;
 	}
 }
 
@@ -29,14 +41,6 @@ $desktop: new-breakpoint(min-width $s-d, 12);
 	}
 }
 
-.col-content {
-	@include span-columns(8);
-	@include clearfix;
-	@include media($mobile) {
-		@include span-columns(4);
-		margin: 0;
-	}
-}
 
 aside {
 	@include span-columns(4);
